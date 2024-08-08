@@ -18,10 +18,9 @@ class PrimaryActionButton extends StatelessWidget {
           ),
           onPressed: () {},
           icon: SvgPicture.asset("assets/images/Google.svg"),
-          label: Text(
+          label: const Text(
             "GET STARTED",
             style: TextStyle(
-              fontFamily: 'Gilroy-Medium',
               fontWeight: FontWeight.w600,
               fontSize: 16,
             ),

@@ -76,15 +76,7 @@ flutter:
   fonts:
     - family: Gilroy
       fonts:
-        - asset: assets/fonts/Gilroy-Black.ttf
-        - asset: assets/fonts/Gilroy-ExtraBold.ttf
-        - asset: assets/fonts/Gilroy-Heavy.ttf
-        - asset: assets/fonts/Gilroy-Light.ttf
-        - asset: assets/fonts/Gilroy-Medium.ttf
         - asset: assets/fonts/Gilroy-Regular.ttf
-        - asset: assets/fonts/Gilroy-SemiBold.ttf
-        - asset: assets/fonts/Gilroy-Thin.ttf
-        - asset: assets/fonts/Gilroy-UltraLight.ttf
 
   #   - family: Trajan Pro
   #     fonts:
@@ -94,3 +86,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+# flutter-icons:
+#   android: true
+#   ios: true
+#   image_path: "assets/logo.png"
