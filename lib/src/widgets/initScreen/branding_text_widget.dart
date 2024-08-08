@@ -6,7 +6,7 @@ class BrandingText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 75,
+      height: 73,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

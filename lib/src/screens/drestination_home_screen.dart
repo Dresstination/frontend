@@ -39,7 +39,7 @@ class DrestinationHome extends StatelessWidget {
           Positioned(
               left: 0,
               right: 0,
-              top: MediaQuery.of(context).size.height / 2 + 100,
+              top: MediaQuery.of(context).size.height / 2 + 120,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -47,7 +47,7 @@ class DrestinationHome extends StatelessWidget {
                   Container(
                     height: 56,
                     margin: const EdgeInsets.symmetric(
-                        horizontal: 39, vertical: 24),
+                        horizontal: 39, vertical: 22),
                     child: Text(
                         "Lorem ipsum dolor sit amet consectetur. Vulputate nibh eu cras adipiscing ",
                         textAlign: TextAlign.center,

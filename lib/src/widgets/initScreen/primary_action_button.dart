@@ -7,7 +7,7 @@ class PrimaryActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 56),
+      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
       child: ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(338, 54),
