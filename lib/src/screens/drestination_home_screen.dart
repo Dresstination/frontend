@@ -54,7 +54,7 @@ class DrestinationHome extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: Colors.white.withOpacity(0.7))),
+                            color: Colors.white.withOpacity(0.5))),
                   ),
                   const PrimaryActionButton()
                 ],

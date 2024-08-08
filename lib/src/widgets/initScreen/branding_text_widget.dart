@@ -5,7 +5,7 @@ class BrandingText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 75,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -13,16 +13,18 @@ class BrandingText extends StatelessWidget {
           Text(
             "Your Personal",
             style: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 26,
-            ),
+                fontWeight: FontWeight.w400,
+                fontSize: 26.47,
+                height: 32.71 / 26.47,
+                color: Colors.white.withOpacity(0.8)),
           ),
           Text(
             "Fashion Designer",
             style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 26,
-            ),
+                fontWeight: FontWeight.w700,
+                fontSize: 26.47,
+                height: 32.71 / 26.47,
+                color: Colors.white.withOpacity(0.9)),
           ),
         ],
       ),
