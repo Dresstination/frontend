@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 class BrandingText extends StatelessWidget {
@@ -10,21 +11,37 @@ class BrandingText extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            "Your Personal",
+          DefaultTextStyle(
             style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 26.47,
                 height: 32.71 / 26.47,
                 color: Colors.white.withOpacity(0.8)),
+            child: AnimatedTextKit(
+              isRepeatingAnimation: false,
+              totalRepeatCount: 1,
+              animatedTexts: [
+                WavyAnimatedText(
+                  speed: Duration(milliseconds: 180),
+                  "Your Personal",
+                ),
+              ],
+            ),
           ),
-          Text(
-            "Fashion Designer",
-            style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 26.47,
-                height: 32.71 / 26.47,
-                color: Colors.white.withOpacity(0.9)),
+          AnimatedTextKit(
+            isRepeatingAnimation: false,
+            totalRepeatCount: 1,
+            animatedTexts: [
+              TyperAnimatedText(
+                speed: const Duration(milliseconds: 600),
+                "Fashion Designer",
+                textStyle: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 26.47,
+                    height: 32.71 / 26.47,
+                    color: Colors.white.withOpacity(0.9)),
+              )
+            ],
           ),
         ],
       ),

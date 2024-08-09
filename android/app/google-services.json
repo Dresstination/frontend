@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "938482069909",
+    "project_id": "internapp-dbde8",
+    "storage_bucket": "internapp-dbde8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938482069909:android:b5986ca70d7f13f652069c",
+        "android_client_info": {
+          "package_name": "com.example.dresti_frontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938482069909-kgh5cnlsjlgksith63j5i1ufso68sajd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dresti_frontend",
+            "certificate_hash": "340bf89771c80ab492797b99488b456d74b5fc28"
+          }
+        },
+        {
+          "client_id": "938482069909-imunehntoiq17c9uea3liopf1q9nfujl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjJh2YXp9NC8mJiIW-jw24ufdXC1u2a3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938482069909-imunehntoiq17c9uea3liopf1q9nfujl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
