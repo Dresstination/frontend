@@ -1,4 +1,5 @@
 import 'package:dresti_frontend/src/screens/dashboard_screen.dart';
+import 'package:dresti_frontend/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -51,11 +52,11 @@ class PrimaryActionButton extends StatelessWidget {
                         strokeWidth: 2,
                       )
                     : SvgPicture.asset("assets/images/Google.svg"),
-                label: const Text(
+                label: Text(
                   "GET STARTED",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                  style: Styles.customTextStyle(
+                    'fontSize_16',
+                    'fontWeight_600',
                   ),
                 )),
           );

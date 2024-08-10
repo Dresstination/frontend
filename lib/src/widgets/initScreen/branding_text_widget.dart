@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:dresti_frontend/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class BrandingText extends StatelessWidget {
@@ -12,10 +13,7 @@ class BrandingText extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DefaultTextStyle(
-            style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 26.47,
-                height: 32.71 / 26.47,
+            style: Styles.customTextStyle('fontSize_26', 'fontWeight_400',
                 color: Colors.white.withOpacity(0.8)),
             child: AnimatedTextKit(
               isRepeatingAnimation: false,
@@ -35,10 +33,8 @@ class BrandingText extends StatelessWidget {
               TyperAnimatedText(
                 speed: const Duration(milliseconds: 600),
                 "Fashion Designer",
-                textStyle: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 26.47,
-                    height: 32.71 / 26.47,
+                textStyle: Styles.customTextStyle(
+                    'fontSize_26', 'fontWeight_700',
                     color: Colors.white.withOpacity(0.9)),
               )
             ],

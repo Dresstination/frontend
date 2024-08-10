@@ -8,7 +8,10 @@ class GradientContainer extends StatelessWidget {
     return Container(
       width: 393,
       height: 300,
-      child: Image.asset("assets/images/Vector.jpg"),
+      color: Colors.white,
+      child: Align(
+          alignment: Alignment.topCenter,
+          child: Image.asset("assets/images/Group.jpg")),
     );
   }
 }

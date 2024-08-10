@@ -1,5 +1,6 @@
 import 'package:dresti_frontend/src/widgets/initScreen/branding_text_widget.dart';
 import 'package:dresti_frontend/src/widgets/initScreen/primary_action_button.dart';
+import 'package:dresti_frontend/styles/styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -90,9 +91,8 @@ class _DrestinationHomeState extends State<DrestinationHome> {
                     child: Text(
                         "Lorem ipsum dolor sit amet consectetur. Vulputate nibh eu cras adipiscing ",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
+                        style: Styles.customTextStyle(
+                            'fontSize_16', 'fontWeight_400',
                             color: Colors.white.withOpacity(0.5))),
                   ),
                   PrimaryActionButton(onSignInWithGoogle: signInWithGoogle),
