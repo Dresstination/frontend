@@ -5,19 +5,21 @@ import 'package:dresti_frontend/src/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Platform.isAndroid
       ? await Firebase.initializeApp(
           options: const FirebaseOptions(
-            apiKey: "AIzaSyBjJh2YXp9NC8mJiIW-jw24ufdXC1u2a3Y",
-            appId: "1:938482069909:android:b5986ca70d7f13f652069c",
-            messagingSenderId: "938482069909",
-            projectId: "internapp-dbde8",
+            apiKey: "AIzaSyBSfrDk2F23vDZxq_aeHERBWiGoDshv7Gs",
+            appId: "1:522222707493:android:0d679c6a1b23d43da230cc",
+            messagingSenderId: "522222707493",
+            projectId: "dresstination-a2b2f",
           ),
         )
       : await Firebase.initializeApp();
+  await dotenv.load(fileName: ".env");
   runApp(const DrestinationApp());
 }
 
@@ -41,7 +43,9 @@ class DrestinationApp extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasData && snapshot.data != null) {
             return DashboardScreen(
-                userName: snapshot.data!.displayName.toString());
+              userName: snapshot.data!.displayName.toString(),
+              userId: snapshot.data!.uid.toString(),
+            );
           } else {
             return const DrestinationHome();
           }

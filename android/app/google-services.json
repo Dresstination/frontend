@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "938482069909",
-    "project_id": "internapp-dbde8",
-    "storage_bucket": "internapp-dbde8.appspot.com"
+    "project_number": "522222707493",
+    "project_id": "dresstination-a2b2f",
+    "storage_bucket": "dresstination-a2b2f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:938482069909:android:b5986ca70d7f13f652069c",
+        "mobilesdk_app_id": "1:522222707493:android:0d679c6a1b23d43da230cc",
         "android_client_info": {
-          "package_name": "com.example.dresti_frontend"
+          "package_name": "com.example.drestination"
         }
       },
       "oauth_client": [
         {
-          "client_id": "938482069909-kgh5cnlsjlgksith63j5i1ufso68sajd.apps.googleusercontent.com",
+          "client_id": "522222707493-aqhqf1isdr2v4oo1v6e02qgj2b5dqvl7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.dresti_frontend",
+            "package_name": "com.example.drestination",
             "certificate_hash": "340bf89771c80ab492797b99488b456d74b5fc28"
           }
         },
         {
-          "client_id": "938482069909-imunehntoiq17c9uea3liopf1q9nfujl.apps.googleusercontent.com",
+          "client_id": "522222707493-pknaohpqek8b35omjief2jdd5jum8jfl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBjJh2YXp9NC8mJiIW-jw24ufdXC1u2a3Y"
+          "current_key": "AIzaSyBSfrDk2F23vDZxq_aeHERBWiGoDshv7Gs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "938482069909-imunehntoiq17c9uea3liopf1q9nfujl.apps.googleusercontent.com",
+              "client_id": "522222707493-pknaohpqek8b35omjief2jdd5jum8jfl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

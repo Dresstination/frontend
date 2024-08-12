@@ -1,11 +1,14 @@
+import 'dart:async';
 import 'dart:ui';
 
+import 'package:dresti_frontend/src/fetcher/fetcher.dart';
 import 'package:dresti_frontend/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gif/gif.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class SearchScreen extends StatefulWidget {
@@ -18,6 +21,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen>
     with TickerProviderStateMixin {
   GifController? _controller;
+  final TextEditingController _contentController = TextEditingController();
   bool showProgress = false;
 
   @override
@@ -29,32 +33,53 @@ class _SearchScreenState extends State<SearchScreen>
   @override
   dispose() {
     _controller!.dispose(); // you need this
+    _contentController.dispose();
     super.dispose();
   }
 
   final List<Map<String, dynamic>> statusList = [
     {
-      'image': 'assets/lottie/checkloader2.json',
       'text': 'Thinking',
-      'opacity': 0.5,
+      'opacity': 1.0,
       'fontSize': 'fontSize_16',
       'fontWeight': 'fontWeight_500',
     },
     {
-      'image': 'assets/lottie/roundloader.json',
       'text': 'Gathering Information',
-      'opacity': 1.0,
+      'opacity': 0.5,
       'fontSize': 'fontSize_18',
       'fontWeight': 'fontWeight_500',
     },
     {
-      'image': 'assets/lottie/roundloader.json',
       'text': 'Compiling',
       'opacity': 0.5,
       'fontSize': 'fontSize_16',
       'fontWeight': 'fontWeight_500',
     },
   ];
+
+  // void _startAnimation() {
+  //   int index = 0; // Track the current item to highlight
+  //   Timer.periodic(Duration(seconds: 10), (timer) {
+  //     if (showProgress) {
+  //       setState(() {
+  //         // Reset all items to low opacity and smaller font size
+  //         for (var item in statusList) {
+  //           item['opacity'] = 0.5;
+  //           item['fontSize'] = 'fontSize_16';
+  //         }
+
+  //         // Highlight the current item
+  //         final currentItem = statusList[index];
+  //         currentItem['opacity'] = 1.0;
+  //         currentItem['fontSize'] = 'fontSize_18';
+
+  //         // Move to the next item
+  //         index = (index + 1) % statusList.length; // Cycle through items
+  //       });
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -133,6 +158,7 @@ class _SearchScreenState extends State<SearchScreen>
                 child: Container(
                   height: 190,
                   width: 341,
+                  padding: EdgeInsets.symmetric(horizontal: 26, vertical: 30),
                   decoration: BoxDecoration(
                     border: const GradientBoxBorder(
                       gradient: LinearGradient(
@@ -146,8 +172,11 @@ class _SearchScreenState extends State<SearchScreen>
                         BorderRadius.circular(20.0), // Border radius of 20px
                   ),
                   child: TextField(
+                    controller: _contentController,
+                    autofocus: true,
                     cursorColor: const Color(0xfff0f0f7),
                     textAlign: TextAlign.center,
+
                     maxLines: 6,
                     decoration: InputDecoration(
                       hintText:
@@ -176,10 +205,42 @@ class _SearchScreenState extends State<SearchScreen>
                       side:
                           const BorderSide(width: 1, color: Color(0xff000000))),
                 ),
-                onPressed: () {
-                  setState(() {
-                    showProgress = true;
-                  });
+                onPressed: () async {
+                  final String inputContent = _contentController.text;
+
+                  if (inputContent.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Please enter your recommended fashion details!',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        backgroundColor: Colors.redAccent,
+                        duration: Duration(seconds: 3),
+                      ),
+                    );
+                  } else {
+                    setState(() {
+                      showProgress = true;
+                    });
+
+                    // _startAnimation();
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    String? authToken = prefs.getString('authToken');
+                    print("Auth token: $authToken");
+
+                    // Fetcher fetcher = Fetcher();
+                    // String? outfitId =
+                    //     await fetcher.getOutfitId(authToken!, inputContent);
+                    // if (outfitId != null) {
+                    //   print('Outfit ID: $outfitId');
+                    // } else {
+                    //   print('Failed to retrieve outfit ID');
+                    // }
+                  }
                 },
                 child: Text(
                   "GENERATE",
@@ -212,8 +273,11 @@ class _SearchScreenState extends State<SearchScreen>
                             SizedBox(
                                 height: 20,
                                 width: 20,
-                                child: Lottie.asset(item['image'],
-                                    height: 20, width: 20, fit: BoxFit.fill)),
+                                child: Lottie.asset(
+                                    "assets/lottie/roundloader.json",
+                                    height: 20,
+                                    width: 20,
+                                    fit: BoxFit.fill)),
                             const SizedBox(width: 13),
                             Text(
                               item['text'],

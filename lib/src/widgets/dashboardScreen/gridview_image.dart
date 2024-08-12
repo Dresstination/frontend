@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class CustomImageGrid extends StatelessWidget {
-  final int index;
+  final List<dynamic> outfitElements;
 
-  const CustomImageGrid({super.key, required this.index});
+  const CustomImageGrid({
+    super.key,
+    required this.outfitElements,
+  });
 
   @override
   Widget build(BuildContext context) {
+    print(outfitElements);
     return GridView.custom(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -44,7 +48,7 @@ class CustomImageGrid extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: DecorationImage(
-                image: ExactAssetImage("assets/images/f-${index + 1}.png"),
+                image: NetworkImage(outfitElements[index]['imageURL']),
                 fit: BoxFit.cover, // Adjust BoxFit if necessary
               ),
             ),

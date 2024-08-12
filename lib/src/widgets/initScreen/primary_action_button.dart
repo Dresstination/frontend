@@ -2,6 +2,7 @@ import 'package:dresti_frontend/src/screens/dashboard_screen.dart';
 import 'package:dresti_frontend/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PrimaryActionButton extends StatelessWidget {
   final Future<dynamic> Function()? onSignInWithGoogle;
@@ -32,15 +33,26 @@ class PrimaryActionButton extends StatelessWidget {
                     userCredential.value = await onSignInWithGoogle!();
 
                     if (userCredential.value != null) {
+                      // final SharedPreferences prefs =
+                      //     await SharedPreferences.getInstance();
+                      // await prefs.setString(
+                      //     'authToken',
+                      //     userCredential.value.credential.accessToken
+                      //         .toString());
+                      print(userCredential.value);
+                      print(userCredential.value.credential.accessToken);
                       print(userCredential.value.user!.email);
+                      print("### ${userCredential.value.user!.uid}");
+
                       // ignore: use_build_context_synchronously
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => DashboardScreen(
-                                  userName: userCredential
-                                      .value.user!.displayName
-                                      .toString())));
+                                    userName:
+                                        userCredential.value.user!.displayName,
+                                    userId: userCredential.value.user!.uid,
+                                  )));
                     }
                   } finally {
                     isLoggingIn.value = false;

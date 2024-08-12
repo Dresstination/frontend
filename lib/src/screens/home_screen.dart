@@ -3,6 +3,7 @@ import 'package:dresti_frontend/src/widgets/initScreen/primary_action_button.dar
 import 'package:dresti_frontend/styles/styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
@@ -31,15 +32,6 @@ class _DrestinationHomeState extends State<DrestinationHome> {
     } on Exception catch (e) {
       // TODO
       print('exception->$e');
-    }
-  }
-
-  Future<void> signOutFromGoogle() async {
-    try {
-      await FirebaseAuth.instance.signOut();
-      print("Signout Success");
-    } on Exception catch (error) {
-      print(error);
     }
   }
 
