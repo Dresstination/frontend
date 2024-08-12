@@ -1,16 +1,31 @@
-# dresti_frontend
 
-A new Flutter project.
+# Dresstination
 
-## Getting Started
+Your one stop destination for fashion suggestions.
 
-This project is a starting point for a Flutter application.
+This app uses Gemini API to provide the ability to generate different fashion suggestions based on your need/ocassion. All you need to do is write a prompt of your requirement, and it will give you AI generated images of the appropriate outfits for the ocassion, description of how you should wear it best, and links to similar outfits on popular shopping websites. 
 
-A few resources to get you started if this is your first Flutter project:
+[Backend Link]()
+## Demonstration
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+video link
+##  Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Backend
+
+- Go
+- Gin
+- Gemini APIs
+- Google APIs
+- Firebase Firestore
+- Firebase Storage
+
+### Frontend
+- Flutter 
+- Dart
+## Authors
+
+- [@kshitij-404](https://www.github.com/kshitij-404)
+- [@rajvarsani](https://www.github.com/rajvarsani)
+- [@22chiragmodh](https://www.github.com/22chiragmodh)
+
