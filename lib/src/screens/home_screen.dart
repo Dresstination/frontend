@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
 class DrestinationHome extends StatefulWidget {
   const DrestinationHome({super.key});
@@ -58,14 +57,10 @@ class _DrestinationHomeState extends State<DrestinationHome> {
             right: 0,
             child: Align(
                 alignment: Alignment.topCenter,
-                child: WidgetAnimator(
-                  atRestEffect: WidgetRestingEffects.dangle(
-                      numberOfPlays: 1, duration: Duration(seconds: 3)),
-                  child: SvgPicture.asset(
-                    "assets/images/Group 35.svg",
-                    width: 230,
-                    height: 347,
-                  ),
+                child: SvgPicture.asset(
+                  "assets/images/Group 35.svg",
+                  width: 230,
+                  height: 347,
                 )),
           ),
           Positioned(

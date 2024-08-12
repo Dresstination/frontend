@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class Fetcher {
   Future<String?> getOutfitId(String token, String content) async {
@@ -64,5 +65,46 @@ class Fetcher {
       print('An error occurred: $e');
     }
     return [];
+  }
+
+  Future<Map<String, dynamic>> getOutfitProductsDetails(
+      String token, String outfitId) async {
+    final Map<String, String> headers = {
+      'Authorization': 'Bearer $token',
+      'Content-Type': 'application/json',
+    };
+
+    try {
+      final response = await http.get(
+        Uri.parse("${dotenv.env['BASE_URL']}/outfits/$outfitId"),
+        headers: headers,
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
+
+        // Return the parsed JSON response as a Map<String, dynamic>
+        return jsonResponse;
+
+        // Convert the List<dynamic> to List<Map<String, dynamic>>
+      } else {
+        print('Request failed with status: ${response.statusCode}');
+
+        return {};
+      }
+    } catch (e) {
+      print('An error occurred: $e');
+    }
+    return {};
+  }
+
+  String formatTimestamp(int timestamp) {
+    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
+
+    DateFormat formatter = DateFormat('MMM d, yyyy');
+
+    String formattedDate = formatter.format(dateTime);
+
+    return formattedDate;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:dresti_frontend/src/fetcher/fetcher.dart';
+import 'package:dresti_frontend/src/screens/expand_view_screen.dart';
 
 import 'package:dresti_frontend/src/screens/search_screen.dart';
 import 'package:dresti_frontend/src/widgets/dashboardScreen/gradiant_container.dart';
@@ -9,7 +10,6 @@ import 'package:dresti_frontend/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class DashboardScreen extends StatefulWidget {
@@ -39,16 +39,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     futureData = fetcher.getOutfitsData(widget.userId);
 
     // print("### $futureData");
-  }
-
-  String formatTimestamp(int timestamp) {
-    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
-
-    DateFormat formatter = DateFormat('MMM d, yyyy');
-
-    String formattedDate = formatter.format(dateTime);
-
-    return formattedDate;
   }
 
   // Future<bool> signOutFromGoogle() async {
@@ -167,8 +157,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               itemCount: data.length,
                               itemBuilder: (context, index) {
                                 final item = data[index];
-                                String formattedDate =
-                                    formatTimestamp(item['timestamp']);
+                                String formattedDate = Fetcher()
+                                    .formatTimestamp(item['timestamp']);
                                 return Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -207,10 +197,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         child: CustomImageGrid(
                                           outfitElements:
                                               item['outfitElements'],
+                                          token: widget.userId,
+                                          outfitId: item['id'],
                                         )),
                                     Center(
                                       child: InkWell(
-                                        onTap: () {},
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => ExpandView(
+                                                token: widget.userId,
+                                                outfitId: item['id'],
+                                              ),
+                                            ),
+                                          );
+                                        },
                                         child: SizedBox(
                                           height: 24,
                                           width: 109,
@@ -280,7 +282,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SearchScreen(),
+                    builder: (context) => SearchScreen(token: widget.userId),
                   ),
                 );
               },

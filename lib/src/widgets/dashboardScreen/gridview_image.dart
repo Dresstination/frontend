@@ -4,10 +4,14 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class CustomImageGrid extends StatelessWidget {
   final List<dynamic> outfitElements;
+  final String token;
+  final String outfitId;
 
   const CustomImageGrid({
     super.key,
     required this.outfitElements,
+    required this.token,
+    required this.outfitId,
   });
 
   @override
@@ -40,7 +44,10 @@ class CustomImageGrid extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ExpandView(),
+                builder: (context) => ExpandView(
+                  token: token,
+                  outfitId: outfitId,
+                ),
               ),
             );
           },

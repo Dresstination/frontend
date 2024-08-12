@@ -1,18 +1,18 @@
-import 'dart:async';
 import 'dart:ui';
 
 import 'package:dresti_frontend/src/fetcher/fetcher.dart';
+import 'package:dresti_frontend/src/screens/expand_view_screen.dart';
 import 'package:dresti_frontend/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gif/gif.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:lottie/lottie.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class SearchScreen extends StatefulWidget {
-  SearchScreen({super.key});
+  String token;
+  SearchScreen({super.key, required this.token});
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -227,19 +227,28 @@ class _SearchScreenState extends State<SearchScreen>
                     });
 
                     // _startAnimation();
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    String? authToken = prefs.getString('authToken');
-                    print("Auth token: $authToken");
+                    // SharedPreferences prefs =
+                    //     await SharedPreferences.getInstance();
+                    // String? authToken = prefs.getString('authToken');
+                    // print("Auth token: $authToken");
 
-                    // Fetcher fetcher = Fetcher();
-                    // String? outfitId =
-                    //     await fetcher.getOutfitId(authToken!, inputContent);
-                    // if (outfitId != null) {
-                    //   print('Outfit ID: $outfitId');
-                    // } else {
-                    //   print('Failed to retrieve outfit ID');
-                    // }
+                    Fetcher fetcher = Fetcher();
+                    String? outfitId =
+                        await fetcher.getOutfitId(widget.token, inputContent);
+                    if (outfitId != null) {
+                      print('Outfit ID: $outfitId');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ExpandView(
+                            token: widget.token,
+                            outfitId: outfitId,
+                          ),
+                        ),
+                      );
+                    } else {
+                      print('Failed to retrieve outfit ID');
+                    }
                   }
                 },
                 child: Text(
