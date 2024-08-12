@@ -1,10 +1,18 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dresti_frontend/src/widgets/expandviewScreen/product_card.dart';
 import 'package:dresti_frontend/src/widgets/expandviewScreen/quick_link_button.dart';
 import 'package:dresti_frontend/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ExpandView extends StatelessWidget {
+class ExpandView extends StatefulWidget {
+  ExpandView({super.key});
+
+  @override
+  State<ExpandView> createState() => _ExpandViewState();
+}
+
+class _ExpandViewState extends State<ExpandView> {
   final List<String> buttonData = [
     'assets/images/grid-icon1.svg',
     'assets/images/grid-icon2.svg',
@@ -21,7 +29,7 @@ class ExpandView extends StatelessWidget {
     },
     {
       'imgUrl': 'assets/images/f-3.png',
-      'description': 'FableStreet ..',
+      'description': 'FableStreet LivSoft Turtle Neck Sweater..',
       'link': 'https://example.com/product2',
       'price': 1500.0,
     },
@@ -33,10 +41,27 @@ class ExpandView extends StatelessWidget {
     },
   ];
 
-  ExpandView({super.key});
+  final List<String> imgList = [
+    'https://plus.unsplash.com/premium_photo-1669138520397-9147a0a55fff?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z2lybHMlMjBmYXNoaW9ufGVufDB8fDB8fHww',
+    'https://images.unsplash.com/photo-1591155048800-93b29d215ed8?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2lybHMlMjBmYXNoaW9ufGVufDB8fDB8fHww',
+    'https://plus.unsplash.com/premium_photo-1669138512601-e3f00b684edc?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGdpcmxzJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D',
+    'https://plus.unsplash.com/premium_photo-1670282393309-70fd7f8eb1ef?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGdpcmxzJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D',
+    'https://plus.unsplash.com/premium_photo-1682095757120-c9abb908ed60?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Z2lybHMlMjBmYXNoaW9ufGVufDB8fDB8fHww',
+  ];
+
+  int curpage = 0; // To track the current carousel image index
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> imageSliders = imgList
+        .map((item) => ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                  height: 345,
+                  width: 361,
+                  child: Image.network(item, fit: BoxFit.fill)),
+            ))
+        .toList();
     return Scaffold(
         body: SafeArea(
             child: SingleChildScrollView(
@@ -83,17 +108,59 @@ class ExpandView extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              height: 340,
-              width: 340,
-              margin: const EdgeInsets.symmetric(vertical: 30),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Image.asset(
-                "assets/images/expand.png",
-                fit: BoxFit.fill,
-              ),
+            Stack(
+              children: [
+                Container(
+                  height: 345,
+                  width: 361,
+                  margin: const EdgeInsets.symmetric(vertical: 30),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: CarouselSlider(
+                      options: CarouselOptions(
+                        height: 345,
+                        aspectRatio: 1,
+                        enlargeCenterPage: true,
+                        viewportFraction: 1.0,
+                        enableInfiniteScroll: false,
+                        initialPage: 0,
+                        autoPlay: true,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            curpage = index;
+                          });
+                        },
+                      ),
+                      items: imageSliders,
+                    ),
+                  ),
+                ),
+                Positioned(
+                    bottom: 50,
+                    left: 0,
+                    right: 0,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        width: 43,
+                        height: 25,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(19.91),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "${curpage + 1}/${imgList.length}",
+                            textAlign: TextAlign.center,
+                            style: Styles.customTextStyle(
+                              'fontSize_14',
+                              'fontWeight_700',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ))
+              ],
             ),
             Container(
               margin: EdgeInsets.only(top: 5),

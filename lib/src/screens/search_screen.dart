@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gif/gif.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:lottie/lottie.dart';
 
 // ignore: must_be_immutable
 class SearchScreen extends StatefulWidget {
@@ -25,23 +26,29 @@ class _SearchScreenState extends State<SearchScreen>
     super.initState();
   }
 
+  @override
+  dispose() {
+    _controller!.dispose(); // you need this
+    super.dispose();
+  }
+
   final List<Map<String, dynamic>> statusList = [
     {
-      'image': 'assets/images/circle-check.svg',
+      'image': 'assets/lottie/checkloader2.json',
       'text': 'Thinking',
       'opacity': 0.5,
       'fontSize': 'fontSize_16',
       'fontWeight': 'fontWeight_500',
     },
     {
-      'image': 'assets/images/loader.svg',
+      'image': 'assets/lottie/roundloader.json',
       'text': 'Gathering Information',
       'opacity': 1.0,
       'fontSize': 'fontSize_18',
       'fontWeight': 'fontWeight_500',
     },
     {
-      'image': 'assets/images/loader.svg',
+      'image': 'assets/lottie/roundloader.json',
       'text': 'Compiling',
       'opacity': 0.5,
       'fontSize': 'fontSize_16',
@@ -201,7 +208,12 @@ class _SearchScreenState extends State<SearchScreen>
                         margin: EdgeInsets.only(bottom: 10),
                         child: Row(
                           children: [
-                            SvgPicture.asset(item['image']),
+                            // SvgPicture.asset(item['image']),
+                            SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: Lottie.asset(item['image'],
+                                    height: 20, width: 20, fit: BoxFit.fill)),
                             const SizedBox(width: 13),
                             Text(
                               item['text'],

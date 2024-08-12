@@ -1,7 +1,6 @@
 import 'package:dresti_frontend/src/widgets/expandviewScreen/quick_link_button.dart';
 import 'package:dresti_frontend/styles/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ProductCard extends StatelessWidget {
   final String imgUrl;
