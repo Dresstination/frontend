@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "522222707493",
-    "project_id": "dresstination-a2b2f",
-    "storage_bucket": "dresstination-a2b2f.appspot.com"
+    "project_number": "196615271879",
+    "project_id": "dresstination-v2",
+    "storage_bucket": "dresstination-v2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:522222707493:android:0d679c6a1b23d43da230cc",
+        "mobilesdk_app_id": "1:196615271879:android:559af6f5b19889937015e2",
         "android_client_info": {
-          "package_name": "com.example.drestination"
+          "package_name": "com.example.drestinationv2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "522222707493-aqhqf1isdr2v4oo1v6e02qgj2b5dqvl7.apps.googleusercontent.com",
+          "client_id": "196615271879-enkce1ursotn18cp1vcclocito3t1npj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.drestination",
+            "package_name": "com.example.drestinationv2",
             "certificate_hash": "340bf89771c80ab492797b99488b456d74b5fc28"
           }
         },
         {
-          "client_id": "522222707493-pknaohpqek8b35omjief2jdd5jum8jfl.apps.googleusercontent.com",
+          "client_id": "196615271879-kvppm6bvgeeuu7ngnemhgqd9k1cos81p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBSfrDk2F23vDZxq_aeHERBWiGoDshv7Gs"
+          "current_key": "AIzaSyBOayvQYJIk2Pi-1ABHXcsIKVWqWecTML0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "522222707493-pknaohpqek8b35omjief2jdd5jum8jfl.apps.googleusercontent.com",
+              "client_id": "196615271879-kvppm6bvgeeuu7ngnemhgqd9k1cos81p.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

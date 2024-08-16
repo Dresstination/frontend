@@ -71,10 +71,23 @@ class _ExpandViewState extends State<ExpandView> {
 
   String _truncateTitle(String title) {
     const int maxLength = 24;
-    if (title.length > maxLength) {
-      return '${title.substring(0, maxLength)}...';
+
+    // Capitalize the first letter of each word
+    String capitalizeWords(String str) {
+      return str.split(' ').map((word) {
+        if (word.isEmpty) return word;
+        return '${word[0].toUpperCase()}${word.substring(1)}';
+      }).join(' ');
     }
-    return title;
+
+    // Capitalize the title
+    String capitalizedTitle = capitalizeWords(title);
+
+    // Truncate the title if necessary
+    if (capitalizedTitle.length > maxLength) {
+      return '${capitalizedTitle.substring(0, maxLength)}...';
+    }
+    return capitalizedTitle;
   }
 
   @override
@@ -299,7 +312,7 @@ class _ExpandViewState extends State<ExpandView> {
                             title: product['title'],
                             link: product['link'],
                             price: product['price'] == "N/A"
-                                ? "0.0"
+                                ? " "
                                 : product['price'],
                           );
                         },

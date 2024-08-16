@@ -12,10 +12,10 @@ void main() async {
   Platform.isAndroid
       ? await Firebase.initializeApp(
           options: const FirebaseOptions(
-            apiKey: "AIzaSyBSfrDk2F23vDZxq_aeHERBWiGoDshv7Gs",
-            appId: "1:522222707493:android:0d679c6a1b23d43da230cc",
-            messagingSenderId: "522222707493",
-            projectId: "dresstination-a2b2f",
+            apiKey: "AIzaSyBOayvQYJIk2Pi-1ABHXcsIKVWqWecTML0",
+            appId: "1:196615271879:android:559af6f5b19889937015e2",
+            messagingSenderId: "196615271879",
+            projectId: "dresstination-v2",
           ),
         )
       : await Firebase.initializeApp();

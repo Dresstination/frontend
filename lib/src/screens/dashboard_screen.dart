@@ -10,6 +10,7 @@ import 'package:dresti_frontend/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 // ignore: must_be_immutable
 class DashboardScreen extends StatefulWidget {
@@ -134,7 +135,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
-                          return SizedBox(
+                          return const SizedBox(
                             height: 500,
                             child: Center(
                                 child: CircularProgressIndicator(
@@ -146,7 +147,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               child: Text('Error: ${snapshot.error}'));
                         } else if (!snapshot.hasData ||
                             snapshot.data!.isEmpty) {
-                          return Center(child: Text('No data available'));
+                          return SizedBox(
+                              height: 500,
+                              child: Center(
+                                  child: Lottie.asset(
+                                      "assets/lottie/no-item.json",
+                                      height: 20,
+                                      width: 20,
+                                      fit: BoxFit.fill)));
                         } else {
                           final data = snapshot.data!;
                           print(data);
